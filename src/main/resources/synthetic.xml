@@ -12,7 +12,15 @@
 -->
 
 <synthetic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-           xmlns="http://www.xebialabs.com/deployit/synthetic"
-           xsi:schemaLocation="http://www.xebialabs.com/deployit/synthetic synthetic.xsd">
+  xmlns="http://www.xebialabs.com/deployit/synthetic"
+  xsi:schemaLocation="http://www.xebialabs.com/deployit/synthetic synthetic.xsd">
+
+  <type type="delphix.Server" extends="configuration.HttpConnection">
+  </type>
+  <type type="delphix.LoadData" extends="xlrelease.PythonScript">
+    <property name="server" kind="ci" referenced-type="delphix.Server" category="input"/>
+    <property name="dataVersion" category="input"/>
+    <property name="status" category="output"/>
+  </type>
 
 </synthetic>
