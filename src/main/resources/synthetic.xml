@@ -24,19 +24,30 @@
   </type>
 
 
+  <type type="delphix.CreateVirtualDatabase" extends="delphix.RunCommandLine">
+    <property name="dxToolkitScript" default="dx_provision_vdb.pl" category="input" hidden="true"/>
+  </type>
+
   <type type="delphix.RunCommandLine" extends="remoteScript.Unix">
     <property name="taskColor" hidden="true" default="#009896"/>
     <property name="scriptLocation" hidden="true" default="delphix/run-pl-command.py" />
     <property name="scriptTemplate" hidden="true" default="delphix/run-pl-command.template.sh" />
     <property name="script" size="large" hidden="true"  default="XXX" category="input" description="Shell script to execute on the remote host"/>
     <property name="serverDelphix" category="input" />
-    <property name="sourceDatabaseName" category="input" />
+    <property name="dxToolkitHome" category="input" default="/u02/dxtoolkit" />
+    <property name="dxToolkitScript" category="input" />
     <property name="sourceDatabaseName" category="input" />
     <property name="targetDatabaseName" category="input" />
     <property name="groupName" category="input" />
     <property name="targetName" category="input" />
     <property name="databaseType" category="input" default="oracle"/>
-    <property name="DB_HOME" category="input" default="/u01/app/oracle/product/11.2.0/dbhome_1"/>
+    <property label="DB_HOME" name="DB_HOME" category="input" default="/u01/app/oracle/product/11.2.0/dbhome_1"/>
+
+    <property name="sudoUsername" category="Xinput" kind="string" required="false" hidden="true" default="" label="SUDO username" description="Username to sudo to when accessing files or executing commands"/>
+    <property name="suUsername" category="Xinput" kind="string" required="false"  hidden="true" default="" label="SU username" description="Username to su to when accessing files or executing commands"/>
+    <property name="suPassword" category="Xinput" kind="string" required="false" hidden="true" default="" password="true" label="SU password" description="Password of user to su to when accessing files or executing commands"/>
+    <property name="jumpstation" category="Xinput" kind="ci" required="false" referenced-type="remoteScript.Jumpstation"
+                  description="Jumpstation that should be used to reach this host."/>
   </type>
 
 

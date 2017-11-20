@@ -3,28 +3,20 @@ from com.xebialabs.xlrelease.plugin.overthere import RemoteScript
 
 
 mytemplate=open('ext/delphix/./run-pl-command.template.sh','r')
-#data=mytemplate.readlines()
 data = "".join(mytemplate.readlines()[0:])
-print "------------------"
-print mytemplate
-print "-----------------"
-print data
-print "------------------"
 config = {'serverDelphix':serverDelphix,
         'sourceDatabaseName':sourceDatabaseName,
         'targetDatabaseName':targetDatabaseName,
         'groupName':groupName,
         'targetName':targetName,
         'databaseType':databaseType,
+        'dxToolkitHome':dxToolkitHome,
+        'dxToolkitScript':dxToolkitScript,
         'DB_HOME':DB_HOME}
 
-print config
-print "--------"
+#print config
 print data.format(**config)
-print "-assign"
 task.pythonScript.setProperty('script', data.format(**config))
-
-
 
 script = RemoteScript(task.pythonScript)
 exitCode = script.execute()
