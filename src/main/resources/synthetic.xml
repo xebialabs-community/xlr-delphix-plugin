@@ -23,4 +23,20 @@
     <property name="status" category="output"/>
   </type>
 
+
+  <type type="delphix.RunCommandLine" extends="remoteScript.Unix">
+    <property name="taskColor" hidden="true" default="#009896"/>
+    <property name="scriptLocation" hidden="true" default="delphix/run-pl-command.py" />
+    <property name="scriptTemplate" hidden="true" default="delphix/run-pl-command.template.sh" />
+    <property name="script" size="large" hidden="true"  default="XXX" category="input" description="Shell script to execute on the remote host"/>
+    <property name="serverDelphix" category="input" />
+    <property name="sourceDatabaseName" category="input" />
+    <property name="sourceDatabaseName" category="input" />
+    <property name="targetDatabaseName" category="input" />
+    <property name="groupName" category="input" />
+    <property name="targetName" category="input" />
+    <property name="databaseType" category="input" default="oracle"/>
+    <property name="DB_HOME" category="input" default="/u01/app/oracle/product/11.2.0/dbhome_1"/>
+  </type>
+
 </synthetic>
