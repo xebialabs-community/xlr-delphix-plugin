@@ -21,6 +21,7 @@ See the [XL Release reference manual](https://docs.xebialabs.com/xl-release) for
 ## Requirements
 
 Note: XLR version should not be lower than lowest supported version.  See <https://support.xebialabs.com/hc/en-us/articles/115003299946-Supported-XebiaLabs-product-versions>.
+Install [DXToolKit](https://github.com/delphix/dxtoolkit) on the remote machine.
 
 ## Installation
 
@@ -28,6 +29,8 @@ Note: XLR version should not be lower than lowest supported version.  See <https
 * Restart the XL Deploy|Release server.
 
 ## Features/Usage/Types/Tasks
+
+Provide task for Delphix. 
 
 ## References
 
