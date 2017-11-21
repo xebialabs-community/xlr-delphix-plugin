@@ -34,3 +34,11 @@ Provide task for Delphix.
 
 ## References
 
+## TODO
+
+* Task using the REST API instead of the dbxtoolkint
+
+** https://docs.delphix.com/display/DOCS42/API+Cookbook%3A+Example+Provision+Of+An+Oracle+VDB
+** https://docs.delphix.com/display/DOCS42/API+Cookbook%3A+Authentication
+
+
