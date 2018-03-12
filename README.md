@@ -40,11 +40,11 @@ The tasks are:
 
 ## References
 
-## TODO
+* https://docs.delphix.com/docs/reference/web-service-api-guide/web-service-protocol
+* https://docs.delphix.com/docs/reference/web-service-api-guide/web-service-object-model
+* https://docs.delphix.com/docs/reference/web-service-api-guide/api-cookbook-common-tasks-workflows-and-examples/api-cookbook-stop-start-a-vdb
 
-* Task using the REST API instead of the dbxtoolkint
-
-** https://docs.delphix.com/display/DOCS42/API+Cookbook%3A+Example+Provision+Of+An+Oracle+VDB
-** https://docs.delphix.com/display/DOCS42/API+Cookbook%3A+Authentication
+# TODO
+* Move to the python SDK
 
 
