@@ -125,7 +125,7 @@ class DelphixClient:
             "timeflowPointParameters": {
                 "type": "TimeflowPointSemantic",
                 "container": parameters['cont'],
-                
+                "location": "LATEST_SNAPSHOT"
             }
         }
 
