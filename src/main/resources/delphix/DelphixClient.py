@@ -63,7 +63,7 @@ class DelphixClient:
                       cookies=self.cookies)
 
     def _get_params(self, vdb):
-        result = {'ref': 'XXXX', 'cont': 'YYYY', 'vsrc': 'ZZZZ'}
+        result = {'ref': 'NOT_FOUND', 'cont': 'NOT_FOUND', 'vsrc': 'NOT_FOUND'}
         print('- get params')
         headers = {'Content-type': 'application/json'}
 
@@ -122,7 +122,7 @@ class DelphixClient:
             "type": "OracleRollbackParameters",
             "timeflowPointParameters": {
                 "type": "TimeflowPointSemantic",
-                "container": parameters['cont'],
+                "container": parameters['ref'],
                 "location": "LATEST_SNAPSHOT"
             }
         }

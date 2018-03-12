@@ -12,7 +12,7 @@ if __name__ == '__main__':
 
     sys.path.append('/Users/bmoussaud/Workspace/xebialabs-community/xlr-delphix-plugin/src/main/resources')
     server = {'url': 'http://ba5b5824.ngrok.io', 'username': 'delphix_admin', 'password': 'landshark'}
-    vdb = 'ITIM'
+    vdb = 'XEBIA'
 
 from delphix.DelphixClient import DelphixClient
 
