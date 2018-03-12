@@ -1,11 +1,14 @@
 import org.apache.tools.ant.filters.ReplaceTokens
 
 plugins {
-  id "com.github.hierynomus.license" version "0.14.0"
-  id "com.xebialabs.xldp" version "1.0.5"
-  id 'nebula.release' version '6.0.0'
-  id "com.xebialabs.xl.docker" version "1.1.0"
+    id "com.github.hierynomus.license" version "0.13.0"
+    id "com.github.hierynomus.jython" version "0.8.0"
+    id "java"
 }
+
+
+sourceSets.main.resources.srcDirs += ["src/main/jython"]
+sourceSets.test.resources.srcDirs += ["src/test/jython"]
 
 apply plugin: 'eclipse'
 apply plugin: 'idea'
@@ -13,49 +16,50 @@ apply plugin: 'java'
 apply plugin: 'maven'
 
 repositories {
-  mavenLocal()
-  mavenCentral()
-  maven {
-    url 'https://dist.xebialabs.com/public/maven2'
-  }
+    mavenLocal()
+    mavenCentral()
+    maven {
+        url 'https://dist.xebialabs.com/public/maven2'
+    }
 }
 
+
+dependencies {
+
+    jython ":requests:2.13.0"
+    jython python(":six:1.11.0") {
+        useModuleName = false
+        copy {
+            from "six.py"
+        }
+    }
+}
 
 version = "1.0.0"
 
-// sourceCompatibility = 1.7
-// targetCompatibility = 1.7
-
-xlDocker {
-  compileImage = 'xebialabs/xlr_dev_compile'
-  compileVersion = 'v7.2.0.2'
-  runImage = 'xebialabs/xlr_dev_run'
-  runVersion = 'v7.2.0.1'
-  runPortMapping = '15516:5516'
-}
 
 if (!project.hasProperty('release.scope')) {
-  project.ext['release.scope'] = 'patch'
+    project.ext['release.scope'] = 'patch'
 }
 
 if (!project.hasProperty('release.useLastTag')) {
-  project.ext['release.useLastTag'] = true
+    project.ext['release.useLastTag'] = true
 }
 
 processResources.configure {
-  filter ReplaceTokens, tokens: [
-    'project.version': version.toString(),
-    'project.name'   : rootProject.name
-  ]
+    filter ReplaceTokens, tokens: [
+            'project.version': version.toString(),
+            'project.name'   : rootProject.name
+    ]
 }
 
 license {
-  header rootProject.file('License.md')
-  strictCheck true
-  ext.year = Calendar.getInstance().get(Calendar.YEAR)
-  ext.name = 'XEBIALABS'
+    header rootProject.file('License.md')
+    strictCheck false
+    ignoreFailures true
+    excludes(["**/*.json", "**/requests/*", "**/responses/**", "**/logback-test.xml", "**/build/jython/**"])
+    ext.year = Calendar.getInstance().get(Calendar.YEAR)
+    ext.name = 'XEBIALABS'
 }
-
-
 
 
