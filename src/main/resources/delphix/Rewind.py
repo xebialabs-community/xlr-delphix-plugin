@@ -17,6 +17,6 @@ if __name__ == '__main__':
 from delphix.DelphixClient import DelphixClient
 
 client = DelphixClient(server)
-output = client.refresh(vdb)
+client.rewind(vdb)
 job = output['job']
 action = output['action']

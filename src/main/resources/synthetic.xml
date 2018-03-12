@@ -21,14 +21,23 @@
         <property name="server" category="input" label="Server" referenced-type="delphix.Server" kind="ci"/>
         <property name="username" category="input" required="false"/>
         <property name="password" password="true" category="input" required="false"/>
+
+        <property name="vdb" category="input"/>
+        <property name="job" category="ouput" required="false"/>
+        <property name="action" category="ouput" required="false"/>
+
     </type>
 
     <type type="delphix.Refresh" extends="delphix.Task">
-        <property name="vdb" category="input"/>
+
     </type>
 
     <type type="delphix.Snapshot" extends="delphix.Task">
-        <property name="vdb" category="input"/>
+
+    </type>
+
+    <type type="delphix.Rewind" extends="delphix.Task">
+
     </type>
 
 
