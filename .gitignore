@@ -2,3 +2,7 @@
 build
 temp
 supervisord.*
+xl-release-7.6.1-server
+*.iml
+.idea
+
