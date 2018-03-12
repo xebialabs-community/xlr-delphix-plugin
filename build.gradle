@@ -35,7 +35,7 @@ dependencies {
     }
 }
 
-version = "1.0.0"
+version = "1.0.1"
 
 
 if (!project.hasProperty('release.scope')) {
