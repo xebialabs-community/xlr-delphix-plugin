@@ -10,6 +10,8 @@
 [xlr-delphix-plugin-license-url]: https://opensource.org/licenses/MIT
 [xlr-delphix-plugin-downloads-image]: https://img.shields.io/github/downloads/xebialabs-community/xlr-delphix-plugin/total.svg
 
+![Google Compute](src/main/resources/delphix/delphix.png)
+
 ## Preface
 
 This document describes the functionality provided by the XLRelease plugin for Delphix.
@@ -21,7 +23,8 @@ See the [XL Release reference manual](https://docs.xebialabs.com/xl-release) for
 ## Requirements
 
 Note: XLR version should not be lower than lowest supported version.  See <https://support.xebialabs.com/hc/en-us/articles/115003299946-Supported-XebiaLabs-product-versions>.
-Install [DXToolKit](https://github.com/delphix/dxtoolkit) on the remote machine.
+The plugins uses the REST API (1.8.2) exposed by the server.
+
 
 ## Installation
 
@@ -30,7 +33,10 @@ Install [DXToolKit](https://github.com/delphix/dxtoolkit) on the remote machine.
 
 ## Features/Usage/Types/Tasks
 
-Provide task for Delphix. 
+The tasks are:
+* Refresh
+* Rewind
+* Snapshot
 
 ## References
 
