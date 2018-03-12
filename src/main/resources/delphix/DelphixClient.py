@@ -58,11 +58,9 @@ class DelphixClient:
     def _logout(self):
         print('- logout')
         headers = {'Content-type': 'application/json'}
-        r = requests.post('{0}/resources/json/delphix/logout'.format(self.server['url']),
-                          headers=headers,
-                          cookies=self.cookies)
-
-        return r.text
+        requests.post('{0}/resources/json/delphix/logout'.format(self.server['url']),
+                      headers=headers,
+                      cookies=self.cookies)
 
     def _get_params(self, vdb):
         result = {'ref': 'XXXX', 'cont': 'YYYY', 'vsrc': 'ZZZZ'}
@@ -171,17 +169,20 @@ class DelphixClient:
     def refresh(self, vdb):
         self._login()
         print("- Refresh {0} with Delphix".format(vdb))
-        self._refresh(vdb)
+        result = self._refresh(vdb)
         self._logout()
+        return result
 
     def snapshot(self, vdb):
         self._login()
         print("- Snapshot {0} with Delphix".format(vdb))
-        self._snapshot(vdb)
+        result = self._snapshot(vdb)
         self._logout()
+        return result
 
     def rewind(self, vdb):
         self._login()
         print("- Rewind {0} with Delphix".format(vdb))
-        self._rewind(vdb)
+        result = self._rewind(vdb)
         self._logout()
+        return result
