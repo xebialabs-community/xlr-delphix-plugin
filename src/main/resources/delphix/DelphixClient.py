@@ -1,5 +1,4 @@
 #
-#
 # Copyright 2018 XEBIALABS
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
@@ -161,6 +160,47 @@ class DelphixClient:
         else:
             raise self._response_error(r)
 
+    def _stop(self, vdb):
+        parameters = self._get_params(vdb=vdb)
+        print("- stop ")
+        headers = {'Content-type': 'application/json'}
+ #       data = {
+ #           "type": "OracleSyncParameters"
+ #       }
+
+        r = requests.post(
+            '{0}/resources/json/delphix/database/{1}/stop'.format(self.server['url'], parameters['ref']),
+            headers=headers,
+            cookies=self.cookies,
+ #           data=json.dumps(data))
+
+        if self._response_ok(r):
+            print("- Job    {0}".format(r.json()['job']))
+            print("- Action {0}".format(r.json()['action']))
+            return {'job': r.json()['job'], 'action': r.json()['action']}
+        else:
+            raise self._response_error(r)
+
+    def _start(self, vdb):
+        parameters = self._get_params(vdb=vdb)
+        print("- snapshot ")
+        headers = {'Content-type': 'application/json'}
+ #       data = {
+ #           "type": "OracleSyncParameters"
+ #       }
+
+        r = requests.post(
+            '{0}/resources/json/delphix/database/{1}/start'.format(self.server['url'], parameters['ref']),
+            headers=headers,
+            cookies=self.cookies)
+#            data=json.dumps(data))
+
+        if self._response_ok(r):
+            print("- Job    {0}".format(r.json()['job']))
+            print("- Action {0}".format(r.json()['action']))
+            return {'job': r.json()['job'], 'action': r.json()['action']}
+        else:
+            raise self._response_error(r)
     def _response_ok(self, r):
         return r.status_code == 200 and r.json()['type'] == 'OKResult'
 
@@ -187,3 +227,17 @@ class DelphixClient:
         result = self._rewind(vdb)
         self._logout()
         return result
+		
+    def stop(self, vdb):
+        self._login()
+        print("- Stop {0} with Delphix".format(vdb))
+        result = self._stop(vdb)
+        self._logout()
+        return result
+
+    def start(self, vdb):
+        self._login()
+        print("- start {0} with Delphix".format(vdb))
+        result = self._start(vdb)
+        self._logout()
+        return result	
