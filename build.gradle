@@ -1,0 +1,65 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+
+plugins {
+    id "com.github.hierynomus.license" version "0.13.0"
+    id "com.github.hierynomus.jython" version "0.8.0"
+    id "java"
+}
+
+
+sourceSets.main.resources.srcDirs += ["src/main/jython"]
+sourceSets.test.resources.srcDirs += ["src/test/jython"]
+
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'java'
+apply plugin: 'maven'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven {
+        url 'https://dist.xebialabs.com/public/maven2'
+    }
+}
+
+
+dependencies {
+
+    jython ":requests:2.13.0"
+    jython python(":six:1.11.0") {
+        useModuleName = false
+        copy {
+            from "six.py"
+        }
+    }
+}
+
+version = "1.0.0"
+
+
+if (!project.hasProperty('release.scope')) {
+    project.ext['release.scope'] = 'patch'
+}
+
+if (!project.hasProperty('release.useLastTag')) {
+    project.ext['release.useLastTag'] = true
+}
+
+processResources.configure {
+    filter ReplaceTokens, tokens: [
+            'project.version': version.toString(),
+            'project.name'   : rootProject.name
+    ]
+}
+
+license {
+    header rootProject.file('License.md')
+    strictCheck false
+    ignoreFailures true
+    excludes(["**/*.json", "**/requests/*", "**/responses/**", "**/logback-test.xml", "**/build/jython/**"])
+    ext.year = Calendar.getInstance().get(Calendar.YEAR)
+    ext.name = 'XEBIALABS'
+}
+
+
