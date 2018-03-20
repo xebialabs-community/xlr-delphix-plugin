@@ -37,6 +37,11 @@ The tasks are:
 * Refresh
 * Rewind
 * Snapshot
+* Start
+* Stop
+* Delete
+* Disable
+* Enable
 
 ## References
 
@@ -46,5 +51,6 @@ The tasks are:
 
 # TODO
 * Move to the python SDK
+* Add job action output on every task script
 
 
