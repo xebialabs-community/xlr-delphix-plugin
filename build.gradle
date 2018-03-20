@@ -24,6 +24,16 @@ repositories {
     }
 }
 
+defaultTasks 'build'
+
+if (!project.hasProperty('release.scope')) {
+  project.ext['release.scope'] = 'patch'
+}
+
+if (!project.hasProperty('release.useLastTag')) {
+  project.ext['release.useLastTag'] = true
+}
+
 
 dependencies {
 
@@ -36,7 +46,6 @@ dependencies {
     }
 }
 
-version = "1.0.3-SNAPSHOT"
 
 
 if (!project.hasProperty('release.scope')) {
