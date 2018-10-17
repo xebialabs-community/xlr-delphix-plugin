@@ -14,7 +14,13 @@
            xmlns="http://www.xebialabs.com/deployit/synthetic"
            xsi:schemaLocation="http://www.xebialabs.com/deployit/synthetic synthetic.xsd">
 
-    <type type="delphix.Server" extends="configuration.HttpConnection"/>
+    <type type="delphix.Server" extends="configuration.HttpConnection">
+        <!-- engine information -->
+        <property name="scriptLocation" default="delphix/TestConnection.py" hidden="true" />
+        <property name="hostname"   required="true"  label="Delphix Host"     description="Name of the Delphix Engine." />
+        <property name="ip_address" required="true"  label="IP Address"       description="Delphix Engine ip address."/>
+        <property name="port"       required="true"  label="Port"             description="Delphix Engine port."/>
+    </type>
 
 
     <type type="delphix.Task" extends="xlrelease.PythonScript" virtual="true">

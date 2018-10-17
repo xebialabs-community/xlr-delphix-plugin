@@ -5,13 +5,20 @@ plugins {
     id "com.github.hierynomus.jython" version "0.8.0"
     id "com.xebialabs.xl.docker" version "1.1.0"
     id "nebula.release" version "6.0.0"
-    id "java"
 }
 
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'java'
 apply plugin: 'maven'
+
+xlDocker {
+  compileImage = 'xebialabsunsupported/xlr_dev_compile'
+  compileVersion = '8.2.0'
+  runImage = 'xebialabsunsupported/xlr_dev_run'
+  runVersion = '8.2.0'
+  runPortMapping = '15516:5516'
+}
 
 if (!project.hasProperty('release.scope')) {
   project.ext['release.scope'] = 'patch'
@@ -23,13 +30,7 @@ if (!project.hasProperty('release.useLastTag')) {
 
 
 dependencies {
-    jython ":requests:2.13.0"
-    jython python(":six:1.11.0") {
-        useModuleName = false
-        copy {
-            from "six.py"
-        }
-    }
+    jython ":delphixpy:1.10.0.0"
 }
 
 
