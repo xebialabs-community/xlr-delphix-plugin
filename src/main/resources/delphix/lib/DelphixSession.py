@@ -39,8 +39,8 @@ class DelphixSession(object):
     @staticmethod
     def create(config):
         sess = DelphixSession()
-        sess.dlpx_engines[config['hostname']] = config
-        sess.serversess(config['ip_address'], config['username'], config['password'])
+        sess.dlpx_engines[config['url']] = config
+        sess.serversess(config['url'], config['username'], config['password'])
         return sess
 
     def serversess(self, f_engine_address, f_engine_username,
