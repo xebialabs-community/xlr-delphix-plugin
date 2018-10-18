@@ -30,7 +30,7 @@ func ReturnBookmarkResponse(res http.ResponseWriter, req *http.Request) {
 	b := json.RawMessage(`{
 		"type":"OKResult",
 		"status":"OK",
-		"result":"JS_BOOKMARK-5",
+		"result": "",
 		"job":null,
 		"action":null
 	}`)
