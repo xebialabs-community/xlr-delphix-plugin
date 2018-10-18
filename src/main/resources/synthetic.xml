@@ -41,12 +41,10 @@
         <property name="bookmark_path" category="input" required="false" label="Bookmark Path" description="Full path of bookmark to delete." />
     </type>
 
-    <type type="delphix.Refresh" extends="delphix.Task">
+    <!-- Database actions -->
+    <type type="delphix.refreshDatabase" extends="delphix.Task">
 
-        <property name="vdb" category="input"/>
-
-        <property name="job" category="output" required="false"/>
-        <property name="action" category="output" required="false"/>
+        <property name="vdb" category="input" description="Reference to a container (vdb) object" />
 
     </type>
 

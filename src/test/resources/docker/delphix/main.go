@@ -18,6 +18,7 @@ type DelphixResponse struct {
 func main() {
 	router := mux.NewRouter().StrictSlash(true)
 	router.HandleFunc("/resources/json/delphix/selfservice/bookmark", ReturnBookmarkResponse).Methods("GET")
+	router.HandleFunc("/resources/json/delphix/database/{ref_id}/refresh", ReturnDatabaseRefreshResponse).Methods("POST")
 	router.HandleFunc("/resources/json/delphix/session", ReturnSessionResponse).Methods("POST")
 	router.HandleFunc("/resources/json/delphix/login", ReturnLoginResponse).Methods("POST")
 	
@@ -26,6 +27,20 @@ func main() {
 
 // ReturnBookmarkResponse sends a dummy response back
 func ReturnBookmarkResponse(res http.ResponseWriter, req *http.Request) {
+	res.Header().Set("Content-Type", "application/json")
+	b := json.RawMessage(`{
+		"type":"OKResult",
+		"status":"OK",
+		"result": "",
+		"job":null,
+		"action":null
+	}`)
+	res.WriteHeader(http.StatusOK)
+	fmt.Fprint(res, string(b))
+}
+
+// ReturnDatabaseRefreshResponse sends a dummy response back
+func ReturnDatabaseRefreshResponse(res http.ResponseWriter, req *http.Request) {
 	res.Header().Set("Content-Type", "application/json")
 	b := json.RawMessage(`{
 		"type":"OKResult",
