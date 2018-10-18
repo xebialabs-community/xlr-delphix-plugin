@@ -31,16 +31,6 @@ dependencies {
     jython ":delphixpy:1.10.0.0"
 }
 
-
-
-if (!project.hasProperty('release.scope')) {
-    project.ext['release.scope'] = 'patch'
-}
-
-if (!project.hasProperty('release.useLastTag')) {
-    project.ext['release.useLastTag'] = true
-}
-
 license {
     header rootProject.file('License.md')
     strictCheck true
