@@ -1,4 +1,4 @@
-# XL Release Delphix plugin v1.0.0
+# XL Release Delphix plugin
 
 [![Build Status][xlr-delphix-plugin-travis-image]][xlr-delphix-plugin-travis-url]
 [![License: MIT][xlr-delphix-plugin-license-image]][xlr-delphix-plugin-license-url]
@@ -23,13 +23,13 @@ See the [XL Release reference manual](https://docs.xebialabs.com/xl-release) for
 ## Requirements
 
 Note: XLR version should not be lower than lowest supported version.  See <https://support.xebialabs.com/hc/en-us/articles/115003299946-Supported-XebiaLabs-product-versions>.
-The plugins uses the REST API (1.8.2) exposed by the server.
+The plugins uses the REST API (1.10.0) exposed by the server.
 
 
 ## Installation
 
-* Copy the latest JAR file from the [releases page](https://github.com/xebialabs-community/xlr-delphix-plugin/releases) into the `XL_RELEASE_SERVER/plugins` directory.
-* Restart the XL Deploy|Release server.
+* Copy the latest JAR file from the [releases page](https://github.com/xebialabs-community/xlr-delphix-plugin/releases) into the `XL_RELEASE_SERVER/plugins/__local__` directory.
+* Restart the XL Release server.
 
 ## Features/Usage/Types/Tasks
 
