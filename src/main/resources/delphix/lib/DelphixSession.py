@@ -8,13 +8,13 @@
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
-from delphixpy.v1_9_0.delphix_engine import DelphixEngine
-from delphixpy.v1_9_0.exceptions import RequestError
-from delphixpy.v1_9_0.exceptions import JobError
-from delphixpy.v1_9_0.exceptions import HttpError
-from delphixpy.v1_9_0 import job_context
-from delphixpy.v1_9_0.web import job
-from delphixpy.v1_9_0.web import system
+from delphixpy.delphix_engine import DelphixEngine
+from delphixpy.exceptions import RequestError
+from delphixpy.exceptions import JobError
+from delphixpy.exceptions import HttpError
+from delphixpy import job_context
+from delphixpy.web import job
+from delphixpy.web import system
 
 from delphix.lib.DlpxException import DlpxException
 from delphix.lib.DxLogging import print_debug

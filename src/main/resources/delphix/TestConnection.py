@@ -1,4 +1,4 @@
-from delphixpy.v1_9_0.web.jetstream.bookmark import bookmark
+from delphixpy.web.selfservice.bookmark import bookmark
 
 from delphix.lib.DelphixSession import DelphixSession
 
