@@ -89,31 +89,6 @@ class DelphixClient:
         print('- source reference {vsrc}'.format(**result))
         return result
 
-    def _refresh(self, vdb):
-        parameters = self._get_params(vdb=vdb)
-        print("- refresh ")
-        headers = {'Content-type': 'application/json'}
-        data = {
-            "type": "OracleRefreshParameters",
-            "timeflowPointParameters": {
-                "type": "TimeflowPointSemantic",
-                "container": parameters['cont'],
-                "location": "LATEST_SNAPSHOT"
-            }
-        }
-
-        r = requests.post(
-            '{0}/resources/json/delphix/database/{1}/refresh'.format(self.server['url'], parameters['ref']),
-            headers=headers,
-            cookies=self.cookies,
-            data=json.dumps(data))
-        if self._response_ok(r):
-            print("- Job    {0}".format(r.json()['job']))
-            print("- Action {0}".format(r.json()['action']))
-            return {'job': r.json()['job'], 'action': r.json()['action']}
-        else:
-            raise self._response_error(r)
-
     def _rewind(self, vdb):
         parameters = self._get_params(vdb=vdb)
         print("- rewind ")
@@ -206,13 +181,6 @@ class DelphixClient:
 
     def _response_error(self, r):
         return Exception(r.text)
-
-    def refresh(self, vdb):
-        self._login()
-        print("- Refresh {0} with Delphix".format(vdb))
-        result = self._refresh(vdb)
-        self._logout()
-        return result
 
     def snapshot(self, vdb):
         self._login()

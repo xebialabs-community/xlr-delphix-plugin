@@ -1,15 +1,14 @@
 language: java
-script: "./gradlew clean build"
-before_deploy:
-- export UPLOAD_FILE=$(ls build/libs/xlr-delphix-plugin*.jar)
 deploy:
   provider: releases
   api_key:
     secure: N3WaXeI1y9i+i2nk3Jm3guYxxPRMZ7RuFdox2onFMHM9WGkvM6Bw+i6QuMUkn3bbr3iDmRpQIjBUGBag3cbMwEMTrLRs2nqMhgFlf52n0DFTEY5UWRAS61m5abuPEyR4l5bURg95qafAH+AMIvuToF2EPkL9ILhFkaayU19DNlxEJl5nFx98w7saB17eFgItRhdYeUdYEnyUp2VY2AQRzhZKq3T4OeW3lGiFUSkglQJfFbWyLtag8GUTqucowSM8y+IH4ThSdFGVzndSUcnbztf+La+piyps44+5WXu5PbfPrfQ0INt/2/Em+FDBkxfuUICcwvxjXa6EhKK+E7GvA+/Mj5CK9GHH0t/EsUkPsvDUCOs/W7dBPV5p6qIrTJQE9+AqldDx5AsmwKodkdteU5kg/B3fsBjZ/j3eGSV671yB5nX+7cDuy5TOObChD9kD9j83ExwoUqStYkkHkbVbstt2uvMwLeNvwUnp9oiBr0zjjnYYQmseYLFkn99MBHt/p8RcooT0UNEm0qYIbuMofgJ4bZfgLgnW+v3BCHGcbfJ2Nv4TOvMZn5aTfPg2JyW9YkU1r+DiBPgwfTKcfqa9J5U0KK92MCHw64BBBiKKHBF18odXta0sULaLWVapZSttTTDk5rc1P+CYuqJISq52ThD/R3rP5o70RSCLNO2KqcA=
-  file: "${UPLOAD_FILE}"
+  file_glob: true
+  file: build/lib/*
   skip_cleanup: true
   on:
     repo: xebialabs-community/xlr-delphix-plugin
+    all_branches: true
     tags: true
 notifications:
   hipchat:

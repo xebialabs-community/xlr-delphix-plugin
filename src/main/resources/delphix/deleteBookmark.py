@@ -8,16 +8,33 @@
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
-if __name__ == '__main__':
-    import sys
+# Deletes a bookmark
+#
+# :param dlpx_obj: Virtualization Engine session object
+# :type dlpx_obj: lib.GetSession.GetSession
+# :param bookmark_name: Bookmark to delete
+# :type bookmark_name: str
 
-    sys.path.append('/Users/bmoussaud/Workspace/xebialabs-community/xlr-delphix-plugin/src/main/resources')
-    server = {'url': 'http://ba5b5824.ngrok.io', 'username': 'delphix_admin', 'password': 'landshark'}
-    vdb = 'XEBIA'
+import sys
 
-from delphix.DelphixClient import DelphixClient
+from delphixpy.web.jetstream import bookmark
+from delphixpy import exceptions
 
-client = DelphixClient(server)
-output = client.snapshot(vdb)
-job = output['job']
-action = output['action']
+from delphix.lib.DelphixSession import DelphixSession
+from delphix.lib.GetReferences import find_bookmark_ref
+import delphix.lib.Util as Util
+
+engine = DelphixSession.create(server).server_session
+
+path = Util.split_bookmark_path(bookmark_path)
+
+bookmark_ref = find_bookmark_ref(engine, path['template_name'], path['container_name'], path['branch_name'], path['bookmark_name'])
+
+try:
+    bookmark.delete(engine, bookmark_ref)
+except exceptions.RequestError as e:
+    print 'EXCEPTION: [%s] \n' % e.message
+    sys.exit(1)
+
+print "Bookmark '%s' deleted" % bookmark_path
+sys.exit(0)

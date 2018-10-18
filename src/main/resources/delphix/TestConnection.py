@@ -8,16 +8,11 @@
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
-if __name__ == '__main__':
-    import sys
+from delphixpy.web.selfservice.bookmark import bookmark
 
-    sys.path.append('/Users/bmoussaud/Workspace/xebialabs-community/xlr-delphix-plugin/src/main/resources')
-    server = {'url': 'http://ba5b5824.ngrok.io', 'username': 'delphix_admin', 'password': 'landshark'}
-    vdb = 'XEBIA'
+from delphix.lib.DelphixSession import DelphixSession
 
-from delphix.DelphixClient import DelphixClient
+dlpx_obj = DelphixSession.create(configuration)
 
-client = DelphixClient(server)
-output = client.snapshot(vdb)
-job = output['job']
-action = output['action']
+# Test Connection by calling this api.
+bookmark.get_all(dlpx_obj.server_session)

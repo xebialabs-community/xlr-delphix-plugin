@@ -5,26 +5,20 @@ plugins {
     id "com.github.hierynomus.jython" version "0.8.0"
     id "com.xebialabs.xl.docker" version "1.1.0"
     id "nebula.release" version "6.0.0"
-    id "java"
 }
-
-sourceSets.main.resources.srcDirs += ["src/main/jython"]
-sourceSets.test.resources.srcDirs += ["src/test/jython"]
 
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'java'
 apply plugin: 'maven'
 
-repositories {
-    mavenLocal()
-    mavenCentral()
-    maven {
-        url 'https://dist.xebialabs.com/public/maven2'
-    }
+xlDocker {
+  compileImage = 'xebialabsunsupported/xlr_dev_compile'
+  compileVersion = '8.2.0-1'
+  runImage = 'xebialabsunsupported/xlr_dev_run'
+  runVersion = '8.2.0-1'
+  runPortMapping = '15516:5516'
 }
-
-defaultTasks 'build'
 
 if (!project.hasProperty('release.scope')) {
   project.ext['release.scope'] = 'patch'
@@ -36,14 +30,7 @@ if (!project.hasProperty('release.useLastTag')) {
 
 
 dependencies {
-
-    jython ":requests:2.13.0"
-    jython python(":six:1.11.0") {
-        useModuleName = false
-        copy {
-            from "six.py"
-        }
-    }
+    jython ":delphixpy:1.10.0.0"
 }
 
 
@@ -65,9 +52,8 @@ processResources.configure {
 
 license {
     header rootProject.file('License.md')
-    strictCheck false
-    ignoreFailures true
-    excludes(["**/*.json", "**/requests/*", "**/responses/**", "**/logback-test.xml", "**/build/jython/**"])
+    strictCheck true
+    excludes(["**/*.json", "**/requests/*", "**/responses/**", "**/logback-test.xml", "**/build/jython/**", "**/delphixpy/**"])
     ext.year = Calendar.getInstance().get(Calendar.YEAR)
     ext.name = 'XEBIALABS'
 }

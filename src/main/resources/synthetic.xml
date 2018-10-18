@@ -14,7 +14,10 @@
            xmlns="http://www.xebialabs.com/deployit/synthetic"
            xsi:schemaLocation="http://www.xebialabs.com/deployit/synthetic synthetic.xsd">
 
-    <type type="delphix.Server" extends="configuration.HttpConnection"/>
+    <type type="delphix.Server" extends="configuration.HttpConnection">
+        <!-- engine information -->
+        <property name="scriptLocation" default="delphix/TestConnection.py" hidden="true" />
+    </type>
 
 
     <type type="delphix.Task" extends="xlrelease.PythonScript" virtual="true">
@@ -24,6 +27,28 @@
         <property name="server" category="input" label="Server" referenced-type="delphix.Server" kind="ci"/>
         <property name="username" category="input" required="false"/>
         <property name="password" password="true" category="input" required="false"/>
+    </type>
+
+    <!-- Bookmark actions -->
+    <type type="delphix.listBookmarks" extends="delphix.Task" description="List all bookmarks on the given engine.">
+        <property name="template_path" category="input" required="true" label="Template Path" description="Full path of template to use." />
+        <property name="tag_filter" category="input" required="false" label="Tag Filter" kind="list_of_string" description="Optional list of tags to match." />
+
+        <property name="bookmarks" category="output" required="false" kind="list_of_string" description="List of bookmarks."/>
+    </type>
+
+    <type type="delphix.deleteBookmark" extends="delphix.Task" description="Delete bookmark on the given engine.">
+        <property name="bookmark_path" category="input" required="false" label="Bookmark Path" description="Full path of bookmark to delete." />
+    </type>
+
+    <!-- Database actions -->
+    <type type="delphix.refreshDatabase" extends="delphix.Task">
+
+        <property name="vdb" category="input" description="Reference to a container (vdb) object" />
+
+    </type>
+
+    <type type="delphix.Snapshot" extends="delphix.Task">
 
         <property name="vdb" category="input"/>
 
@@ -32,15 +57,12 @@
 
     </type>
 
-    <type type="delphix.Refresh" extends="delphix.Task">
-
-    </type>
-
-    <type type="delphix.Snapshot" extends="delphix.Task">
-
-    </type>
-
     <type type="delphix.Rewind" extends="delphix.Task">
+
+        <property name="vdb" category="input"/>
+
+        <property name="job" category="output" required="false"/>
+        <property name="action" category="output" required="false"/>
 
     </type>
 
