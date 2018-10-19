@@ -1,4 +1,6 @@
 [{
     "name" : "delphix_server",
-    "url" : "delphix:8080",
+    "url" : "172.17.0.1:28080",
+    "username": "testuser",
+    "password": "testpassword"
 }]

@@ -40,8 +40,9 @@ sourceSets.test.resources.srcDirs = ["src/test/jython", "src/test/resources"]
 
 
 task testJython(type: Exec, dependsOn: ['testClasses']) {
-  environment = ["itest_conf_file": "$projectDir/src/test/jython/itests/itest-conf.json","CLASSPATH": sourceSets.test.runtimeClasspath.asPath, "PATH": System.getenv("PATH"), "HOME": System.getenv("HOME")]
-  commandLine jythonInterpreter, "-Dpython.path=/opt/xlr/server/plugins/xlr-xld-plugin-7.1.0.jar", "-m", "unittest", "discover", "-s", "./src/test/jython", "-p", "*_test.py", "-v"
+  def classpath = sourceSets.main.runtimeClasspath.asPath + ":$projectDir/build/jython/main:$projectDir/src/main/resources"
+  environment = ["itest_conf_file": "$projectDir/src/test/jython/itests/itest-conf.json","CLASSPATH": classpath, "PATH": System.getenv("PATH"), "HOME": System.getenv("HOME")]
+  commandLine jythonInterpreter, "-m", "unittest", "discover", "-s", "./src/test/jython", "-p", "*_test.py", "-v"
   workingDir = projectDir
 }
 

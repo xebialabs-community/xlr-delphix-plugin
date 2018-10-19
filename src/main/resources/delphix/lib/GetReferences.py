@@ -13,8 +13,6 @@ Module that provides lookups of references and names of Delphix objects.
 """
 
 import re
-from datetime import datetime
-from dateutil import tz
 
 from delphixpy.v1_9_0.web.service import time
 from delphixpy.v1_9_0.exceptions import RequestError
@@ -34,30 +32,6 @@ from delphixpy.v1_9_0.web.jetstream import bookmark
 from DlpxException import DlpxException
 
 VERSION = 'v.0.2.0019'
-
-def convert_timestamp(engine, timestamp):
-    """
-    Convert timezone from Zulu/UTC to the Engine's timezone
-    engine: A Delphix engine session object.
-    timestamp: the timstamp in Zulu/UTC to be converted
-    """
-
-    default_tz = tz.gettz('UTC')
-    engine_tz = time.time.get(engine)
-
-    try:
-        convert_tz = tz.gettz(engine_tz.system_time_zone)
-        utc = datetime.strptime(timestamp, '%Y-%m-%dT%H:%M:%S')
-        utc = utc.replace(tzinfo=default_tz)
-        converted_tz = utc.astimezone(convert_tz)
-        engine_local_tz = '{} {} {}'.format(str(converted_tz.date()),
-                                            str(converted_tz.time()),
-                                            str(converted_tz.tzname()))
-
-        return engine_local_tz
-    except TypeError:
-        return None
-
 
 def find_all_objects(engine, f_class):
     """
