@@ -21,7 +21,7 @@
 
 
     <type type="delphix.Task" extends="xlrelease.PythonScript" virtual="true">
-        <property name="scriptLocation" default="ispw/ISPWTask.py" hidden="true"/>
+        <property name="scriptLocation" default="delphix/DelphixTask.py" hidden="true"/>
         <property name="iconLocation" default="delphix/delphix.png" hidden="true"/>
         <property name="taskColor" hidden="true" default="#70767a"/>
 
