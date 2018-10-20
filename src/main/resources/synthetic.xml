@@ -44,9 +44,7 @@
 
     <!-- Database actions -->
     <type type="delphix.refreshDatabase" extends="delphix.Task">
-
         <property name="vdb" category="input" description="Reference to a container (vdb) object" />
-
     </type>
 
     <type type="delphix.Snapshot" extends="delphix.Task">
