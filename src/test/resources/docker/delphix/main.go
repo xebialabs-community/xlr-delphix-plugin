@@ -17,12 +17,45 @@ type DelphixResponse struct {
 
 func main() {
 	router := mux.NewRouter().StrictSlash(true)
-	router.HandleFunc("/resources/json/delphix/selfservice/bookmark", ReturnBookmarkResponse).Methods("GET")
 	router.HandleFunc("/resources/json/delphix/database/{ref_id}/refresh", ReturnDatabaseRefreshResponse).Methods("POST")
-	router.HandleFunc("/resources/json/delphix/session", ReturnSessionResponse).Methods("POST")
+
 	router.HandleFunc("/resources/json/delphix/login", ReturnLoginResponse).Methods("POST")
+
+	router.HandleFunc("/resources/json/delphix/selfservice/bookmark", ReturnBookmarkResponse).Methods("GET")
+	router.HandleFunc("/resources/json/delphix/selfservice/template", ReturnTemplateResponse).Methods("GET")
+	
+
+	router.HandleFunc("/resources/json/delphix/session", ReturnSessionResponse).Methods("POST")
 	
 	log.Fatal(http.ListenAndServe(":8080", router))
+}
+
+// ReturnDatabaseRefreshResponse sends a dummy response back
+func ReturnDatabaseRefreshResponse(res http.ResponseWriter, req *http.Request) {
+	res.Header().Set("Content-Type", "application/json")
+	b := json.RawMessage(`{
+		"type":"OKResult",
+		"status":"OK",
+		"result": "",
+		"job":null,
+		"action":null
+	}`)
+	res.WriteHeader(http.StatusOK)
+	fmt.Fprint(res, string(b))
+}
+
+// ReturnLoginResponse sends a dummy response back
+func ReturnLoginResponse(res http.ResponseWriter, req *http.Request) {
+	res.Header().Set("Content-Type", "application/json")
+	b := json.RawMessage(`{
+		"status":"OK",
+		"type": "OKResult",
+		"result":"USER-2",
+		"job":null,
+		"action":null
+		}`)
+	res.WriteHeader(http.StatusOK)
+	fmt.Fprint(res, string(b))
 }
 
 // ReturnBookmarkResponse sends a dummy response back
@@ -39,8 +72,8 @@ func ReturnBookmarkResponse(res http.ResponseWriter, req *http.Request) {
 	fmt.Fprint(res, string(b))
 }
 
-// ReturnDatabaseRefreshResponse sends a dummy response back
-func ReturnDatabaseRefreshResponse(res http.ResponseWriter, req *http.Request) {
+// ReturnTemplateResponse sends a dummy response back
+func ReturnTemplateResponse(res http.ResponseWriter, req *http.Request) {
 	res.Header().Set("Content-Type", "application/json")
 	b := json.RawMessage(`{
 		"type":"OKResult",
@@ -72,20 +105,6 @@ func ReturnSessionResponse(res http.ResponseWriter, req *http.Request) {
 		},
 		"job":null
 	}`)
-	res.WriteHeader(http.StatusOK)
-	fmt.Fprint(res, string(b))
-}
-
-// ReturnLoginResponse sends a dummy response back
-func ReturnLoginResponse(res http.ResponseWriter, req *http.Request) {
-	res.Header().Set("Content-Type", "application/json")
-	b := json.RawMessage(`{
-		"status":"OK",
-		"type": "OKResult",
-		"result":"USER-2",
-		"job":null,
-		"action":null
-		}`)
 	res.WriteHeader(http.StatusOK)
 	fmt.Fprint(res, string(b))
 }
