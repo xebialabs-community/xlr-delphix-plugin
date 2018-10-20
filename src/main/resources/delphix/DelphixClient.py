@@ -13,6 +13,7 @@ from delphixpy.web.selfservice import bookmark
 from delphixpy.web.selfservice import branch
 
 from delphix.lib.DelphixSession import DelphixSession
+from delphix.lib.GetReferences import find_bookmark_ref
 from delphix.lib.GetReferences import find_obj_name
 import delphix.lib.Util as Util
 
@@ -54,3 +55,11 @@ class DelphixClient(object):
                 print "%s\n" % key
 
         variables['bookmarks'] = result
+
+    def delphix_deletebookmark(self, variables):
+        path = Util.split_bookmark_path(variables['bookmark_path'])
+
+        bookmark_ref = find_bookmark_ref(self.engine, path['template_name'], path['container_name'], path['branch_name'], path['bookmark_name'])
+        bookmark.delete(self.engine, bookmark_ref)
+
+        print "Bookmark '%s' deleted" % variables['bookmark_path']

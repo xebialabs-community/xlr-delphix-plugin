@@ -14,20 +14,20 @@ Module that provides lookups of references and names of Delphix objects.
 
 import re
 
-from delphixpy.v1_9_0.web.service import time
-from delphixpy.v1_9_0.exceptions import RequestError
-from delphixpy.v1_9_0.exceptions import HttpError
-from delphixpy.v1_9_0.exceptions import JobError
-from delphixpy.v1_9_0.web import repository
-from delphixpy.v1_9_0.web import database
-from delphixpy.v1_9_0.web import source
-from delphixpy.v1_9_0.web import job
-from delphixpy.v1_9_0.web import sourceconfig
+from delphixpy.web.service import time
+from delphixpy.exceptions import RequestError
+from delphixpy.exceptions import HttpError
+from delphixpy.exceptions import JobError
+from delphixpy.web import repository
+from delphixpy.web import database
+from delphixpy.web import source
+from delphixpy.web import job
+from delphixpy.web import sourceconfig
 
-from delphixpy.v1_9_0.web.jetstream import template
-from delphixpy.v1_9_0.web.jetstream import container
-from delphixpy.v1_9_0.web.jetstream import branch
-from delphixpy.v1_9_0.web.jetstream import bookmark
+from delphixpy.web.selfservice import template
+from delphixpy.web.selfservice import container
+from delphixpy.web.selfservice import branch
+from delphixpy.web.selfservice import bookmark
 
 from DlpxException import DlpxException
 
