@@ -9,6 +9,7 @@
 #
 import json
 
+from delphixpy.web.database import database
 from delphixpy.web.selfservice import bookmark
 from delphixpy.web.selfservice import branch
 
@@ -63,3 +64,6 @@ class DelphixClient(object):
         bookmark.delete(self.engine, bookmark_ref)
 
         print "Bookmark '%s' deleted" % variables['bookmark_path']
+
+    def delphix_refreshdatabase(self, variables):
+        return database.refresh(self.engine, variables['vdb'], None)

@@ -8,10 +8,18 @@
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
-# Refreshes a database
 
-from delphixpy.web.database import database
-from delphix.lib.DelphixSession import DelphixSession
 
-engine = DelphixSession.create(server).server_session
-result = database.refresh(engine, vdb, None)
+import unittest
+from itests import DelphixServerCi
+from delphix.DelphixClient import DelphixClient
+from delphix.lib.DlpxException import DlpxException
+
+
+class RefreshDatabase(unittest.TestCase):
+
+
+    def test_refresh_database(self):
+        client = DelphixClient.create_client(DelphixServerCi())
+        variables = {"vdb": "somevirtualdatabase" }
+        client.delphix_refreshdatabase(variables)
