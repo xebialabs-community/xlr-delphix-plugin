@@ -8,16 +8,18 @@
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
-if __name__ == '__main__':
-    import sys
 
-    sys.path.append('/Users/bmoussaud/Workspace/xebialabs-community/xlr-delphix-plugin/src/main/resources')
-    server = {'url': 'http://ba5b5824.ngrok.io', 'username': 'delphix_admin', 'password': 'landshark'}
-    vdb = 'XEBIA'
 
+import unittest
+from itests import DelphixServerCi
 from delphix.DelphixClient import DelphixClient
+from delphix.lib.DlpxException import DlpxException
 
-client = DelphixClient(server)
-output = client.snapshot(vdb)
-job = output['job']
-action = output['action']
+
+class SyncDatabase(unittest.TestCase):
+
+
+    def test_sync_database(self):
+        client = DelphixClient.create_client(DelphixServerCi())
+        variables = {"vdb": "somevirtualdatabase" }
+        client.delphix_syncdatabase(variables)
