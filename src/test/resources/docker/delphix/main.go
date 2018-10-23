@@ -19,6 +19,7 @@ func main() {
 	router := mux.NewRouter().StrictSlash(true)
 	router.HandleFunc("/resources/json/delphix/database/{ref_id}/refresh", ReturnDatabaseResponse).Methods("POST")
 	router.HandleFunc("/resources/json/delphix/database/{ref_id}/sync", ReturnDatabaseResponse).Methods("POST")
+	router.HandleFunc("/resources/json/delphix/database/{ref_id}/rollback", ReturnDatabaseResponse).Methods("POST")
 
 	router.HandleFunc("/resources/json/delphix/login", ReturnLoginResponse).Methods("POST")
 

@@ -51,13 +51,8 @@
         <property name="vdb" category="input"/>
     </type>
 
-    <type type="delphix.Rewind" extends="delphix.Task">
-
+    <type type="delphix.rollbackDatabase" extends="delphix.Task">
         <property name="vdb" category="input"/>
-
-        <property name="job" category="output" required="false"/>
-        <property name="action" category="output" required="false"/>
-
     </type>
 
 

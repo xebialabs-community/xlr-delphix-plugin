@@ -35,8 +35,8 @@ if (!project.hasProperty('jythonInterpreter')) {
   project.ext['jythonInterpreter'] = "jython"
 }
 
-sourceSets.main.resources.srcDirs = ["src/main/jython", "src/main/resources"]
-sourceSets.test.resources.srcDirs = ["src/test/jython", "src/test/resources"]
+// sourceSets.main.resources.srcDirs = ["src/main/jython", "src/main/resources"]
+// sourceSets.test.resources.srcDirs = ["src/test/jython", "src/test/resources"]
 
 
 task testJython(type: Exec, dependsOn: ['testClasses']) {
