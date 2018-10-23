@@ -70,3 +70,6 @@ class DelphixClient(object):
 
     def delphix_syncdatabase(self, variables):
         return database.sync(self.engine, variables['vdb'], None)
+
+    def delphix_rollbackdatabase(self, variables):
+        return database.rollback(self.engine, variables['vdb'], None)
