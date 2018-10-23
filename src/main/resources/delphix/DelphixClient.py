@@ -12,6 +12,7 @@ import json
 from delphixpy.web.database import database
 from delphixpy.web.selfservice import bookmark
 from delphixpy.web.selfservice import branch
+from delphixpy.web.source import source
 
 from delphix.lib.DelphixSession import DelphixSession
 from delphix.lib.GetReferences import find_bookmark_ref
@@ -73,3 +74,9 @@ class DelphixClient(object):
 
     def delphix_rollbackdatabase(self, variables):
         return database.rollback(self.engine, variables['vdb'], None)
+
+    def delphix_stopdatabase(self, variables):
+        return source.stop(self.engine, variables['vdb'], None)
+
+    def delphix_startdatabase(self, variables):
+        return source.start(self.engine, variables['vdb'], None)

@@ -25,6 +25,9 @@ func main() {
 
 	router.HandleFunc("/resources/json/delphix/selfservice/bookmark", ReturnBookmarkResponse).Methods("GET")
 	router.HandleFunc("/resources/json/delphix/selfservice/template", ReturnTemplateResponse).Methods("GET")
+
+	router.HandleFunc("/resources/json/delphix/source/{ref_id}/stop", ReturnDatabaseResponse).Methods("POST")
+	router.HandleFunc("/resources/json/delphix/source/{ref_id}/start", ReturnDatabaseResponse).Methods("POST")
 	
 
 	router.HandleFunc("/resources/json/delphix/session", ReturnSessionResponse).Methods("POST")
