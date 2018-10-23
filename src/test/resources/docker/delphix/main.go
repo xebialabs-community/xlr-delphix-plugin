@@ -17,7 +17,8 @@ type DelphixResponse struct {
 
 func main() {
 	router := mux.NewRouter().StrictSlash(true)
-	router.HandleFunc("/resources/json/delphix/database/{ref_id}/refresh", ReturnDatabaseRefreshResponse).Methods("POST")
+	router.HandleFunc("/resources/json/delphix/database/{ref_id}/refresh", ReturnDatabaseResponse).Methods("POST")
+	router.HandleFunc("/resources/json/delphix/database/{ref_id}/sync", ReturnDatabaseResponse).Methods("POST")
 
 	router.HandleFunc("/resources/json/delphix/login", ReturnLoginResponse).Methods("POST")
 
@@ -30,8 +31,8 @@ func main() {
 	log.Fatal(http.ListenAndServe(":8080", router))
 }
 
-// ReturnDatabaseRefreshResponse sends a dummy response back
-func ReturnDatabaseRefreshResponse(res http.ResponseWriter, req *http.Request) {
+// ReturnDatabaseResponse sends a dummy response back
+func ReturnDatabaseResponse(res http.ResponseWriter, req *http.Request) {
 	res.Header().Set("Content-Type", "application/json")
 	b := json.RawMessage(`{
 		"type":"OKResult",

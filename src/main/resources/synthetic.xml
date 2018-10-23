@@ -47,13 +47,8 @@
         <property name="vdb" category="input" description="Reference to a container (vdb) object" />
     </type>
 
-    <type type="delphix.Snapshot" extends="delphix.Task">
-
+    <type type="delphix.syncDatabase" extends="delphix.Task">
         <property name="vdb" category="input"/>
-
-        <property name="job" category="output" required="false"/>
-        <property name="action" category="output" required="false"/>
-
     </type>
 
     <type type="delphix.Rewind" extends="delphix.Task">

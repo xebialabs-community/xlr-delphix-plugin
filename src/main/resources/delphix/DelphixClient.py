@@ -67,3 +67,6 @@ class DelphixClient(object):
 
     def delphix_refreshdatabase(self, variables):
         return database.refresh(self.engine, variables['vdb'], None)
+
+    def delphix_syncdatabase(self, variables):
+        return database.sync(self.engine, variables['vdb'], None)
