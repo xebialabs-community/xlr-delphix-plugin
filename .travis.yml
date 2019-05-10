@@ -1,5 +1,5 @@
 language: java
-script: ./travis.sh
+script: "./travis.sh"
 deploy:
   provider: releases
   api_key:
@@ -12,6 +12,5 @@ deploy:
     all_branches: true
     tags: true
 notifications:
-  hipchat:
-    rooms:
-      secure: k0EECEKl3ZqGMfHKIvAdenFDNPdG51p1My3rlcRFtsgyMQZw0jIx4aadI/NJkQgKP4J07o+aEoLUqXMVGq/pUbYc3r44Znf7Ie+YYYgFr5nY3JFH0YFHwDRVkBp9y14DjNnhAnfoMIq0A2qUebK7dUuTvHEGU5olYs0XGjHNrK+eK13VGQfY+hRrdR8XsgojnuaGg/oXvacISO7gPYk9xGv1cnkDYo3075UV6AXdsgQkaX0Ju0GR3HKVbmt9WHRzFn3K6ex3LavNY9wYz+MSIdmLaAbb4WVIIOjrSdMjX1F5iJ56xHC7BcOiEHuGURnxhw5WgutWptsTvpWiCisOJRfdW30ulKxosa9OsOrJztO6aFt3zP4m6Mo1b09DX3n6VidVNZqsnSI/QyGjACKdS48w4JqoUgvIpOmbA6k4AJ+RBTpmbsUN6lMnLiObQ5udo8rPRLX5+Y3Z+IUX+yEDPEbMwnX3enod/8vEOiGgttQeWehy0jVuK28K5soslhFWEpUDhslCMZB6b8vzcNqQ3MrYBpenyHJvADftOgMn+yYPl9XwNj4TycSclNfxUiNUi7+HTmkW01yBg3LbRrOG8RjXfR/Yuc0ddJ6hjmLtN479iziXg9WF8h8APwFCmrE/uVOLG44GiXgOV//q1PuIkPvsZ/YMeNV85fk2JUl5YeY=
+  slack:
+    secure: eFmQPBNIwY3+b3zmSqZ4pHiuZ+0kFoXgaidr3j/VDANCKMLFYDAgAGnu5xWO0N2xmlmERAyvhZbtW6H7Yrc1uexfosysAkTpssDEwR+OVEfzCE2CQlAof4h/Hch35y84P8fbQ/tnNhGOL9WDJ0egVLgJHnLAR+u0AsMNnE8W2E4KeEBz7UpcKR+dC0YwkOahP3HFQW+gIAU9fC8q6booiEP2e5FcfIPoE1KP7ikSy71PV2qiH1/sG8nW/yEF0ttvlvOWoYHLR3Z/grM+nxx//05sLScs8PMTqFF0nQFQpDaZ0SX62FJJ9eP31DGRsIQYBqsDMeGHySr0s9Z5HAfcfBdeqw7/v6JwUFlmpgjJGub2m0Oa/y/H43KvW0qQffRD27rZhXqXmNKb5v4bpkVJT5NLCRS76wLrtec+FkduWkTeLeW5kxx25sRvCrrmgMGaloDeAQ8kBmUNzRAZ27mxEkkC++sTYlJ0WCFwQGxtcqctNoRRCWNI6GT8nJOsFBxVCUdJI7zcdxP7MndrG3B+U6vHZXNOAm9qz+ua2EVrQr4kdFx2NTuKpwCCfcXI+dJDZM1YQyeTf964Qux34a6ahsLrQHOKdjxtotAaApHujlarUJUzPS+W/6qGohYB5fHI2lMbivtpSSZHIS2sGxoZgVs+CQnk6HsMxGCf3xAXKSs=
