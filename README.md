@@ -3,6 +3,7 @@
 [![Build Status][xlr-delphix-plugin-travis-image]][xlr-delphix-plugin-travis-url]
 [![License: MIT][xlr-delphix-plugin-license-image]][xlr-delphix-plugin-license-url]
 ![Github All Releases][xlr-delphix-plugin-downloads-image]
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fxebialabs-community%2Fxlr-delphix-plugin.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fxebialabs-community%2Fxlr-delphix-plugin?ref=badge_shield)
 
 [xlr-delphix-plugin-travis-image]: https://travis-ci.org/xebialabs-community/xlr-delphix-plugin.svg?branch=master
 [xlr-delphix-plugin-travis-url]: https://travis-ci.org/xebialabs-community/xlr-delphix-plugin
@@ -54,3 +55,7 @@ The tasks are:
 * Add job action output on every task script
 
 
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fxebialabs-community%2Fxlr-delphix-plugin.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fxebialabs-community%2Fxlr-delphix-plugin?ref=badge_large)
