@@ -22,6 +22,8 @@ See the [XL Release reference manual](https://docs.xebialabs.com/xl-release) for
 
 ## Requirements
 
+You need to have Jython installed to run unit tests.
+
 Note: XLR version should not be lower than lowest supported version.  See <https://support.xebialabs.com/hc/en-us/articles/115003299946-Supported-XebiaLabs-product-versions>.
 The plugins uses the REST API (1.10.0) exposed by the server.
 
