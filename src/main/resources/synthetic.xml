@@ -55,7 +55,7 @@
         <property name="vdb" category="input"/>
     </type>
 
-    <type type="delphix.stopkDatabase" extends="delphix.Task">
+    <type type="delphix.stopDatabase" extends="delphix.Task">
         <property name="vdb" category="input"/>
     </type>
 
